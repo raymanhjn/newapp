@@ -1,0 +1,29 @@
+page-history {
+  .fixed-content,
+  .scroll-content {
+    margin-top: 0 !important;
+  }
+  ion-header {
+    .toolbar-background {
+      background-color: transparent;
+    }
+  }
+  .header-md::after {
+    content: none !important;
+  }
+
+  ion-row {
+    width: 95%;
+    max-width: 800px;
+    margin: auto;
+
+    ion-icon {
+      font-size: 1.5em;
+      margin: 10px 10px 0 0;
+    }
+  }
+
+  h1 {
+    text-align: right;
+  }
+}

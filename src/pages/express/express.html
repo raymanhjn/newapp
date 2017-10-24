@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="expressguide hidesm">
+    <div class="container">
+      <div class="res-info">
+        <!-- <img src="./chihuo.jpg" /> -->
+        <img src="http://www.csufablab.org/wp-content/uploads/2017/05/ups-logo-designer-project-flat-ups-logo-design-concept-mr-william-barry-new-logo.png" />
+      </div>
+    </div>
+  </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col offset-sm-1 col-12 col-sm-3 class="express-rule">
+          <h1>Rules</h1>
+          <ul>
+            <li>first fule</li>
+            <li>second fule</li>
+            <li>third fule</li>
+          </ul>
+        </ion-col>
+        <ion-col offset-sm-1 col-12 col-sm-7>
+          <form (ngSubmit)="submitOrder(express)">
+            <ion-item>
+              <ion-label floating>name</ion-label>
+              <ion-input type="text" [(ngModel)]="express.user_name" name="user_name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>address</ion-label>
+              <ion-input type="text" [(ngModel)]="express.address" name="address"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>category</ion-label>
+              <ion-input type="text" [(ngModel)]="express.item_category" name="item_category"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>weight</ion-label>
+              <ion-input type="text" [(ngModel)]="express.item_weight" name="item_weight"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Need Box</ion-label>
+              <ion-checkbox color="dark" [(ngModel)]="express.needbox" name="needbox"></ion-checkbox>
+            </ion-item>
+            <button ion-button full type="submit">Order</button>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

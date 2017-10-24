@@ -1,0 +1,10 @@
+app-header {
+  width: 100%;
+  .header-md::after {
+    content: none;
+  }
+
+  ion-title {
+    text-align: center;
+  }
+}

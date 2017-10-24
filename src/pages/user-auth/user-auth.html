@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col col-sm-5>
+      <h1>New User</h1>
+      <ion-item>
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="text" [(ngModel)]="nuser.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="nuser.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="nuser.confirm_password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="nuser.username"></ion-input>
+      </ion-item>
+      <div>{{registerError}}</div>
+      <button class="ubutton" ion-button (click)="register(nuser)">Sign up</button>
+    </ion-col>
+    <ion-col offset-sm-2>
+      <h1>Registed User</h1>
+      <ion-item>
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <button class="ubutton" ion-button (click)="login(user)">Login</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-tabs>
+    <ion-tab tabIcon="md-contact" tabTitle="Log in" [root]="tab1">tab1</ion-tab>
+    <ion-tab tabIcon="md-clipboard" tabTitle="Sign up" [root]="tab2">tab1</ion-tab>
+  </ion-tabs>
+</ion-content>

@@ -1,1 +1,29 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-split-pane>
+  <ion-menu [content]="content">
+    <ion-content>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvzMVyxwwnQc8SHOWt6JEp3GMercyC9n-mlAZwPdxf2Lf-lsH-" (click)="gotoUserProfilePage()"/>
+      <h1>{{userLoggedin? username:"guest"}}</h1>
+
+      <div *ngIf="userLoggedin" class="authenticated">
+        <!-- <div class="row">
+          <button class="col col-6" color="secondary" ion-button (click)="gotoOrderHistoryPage()">history</button>
+          <button class="col col-6" default ion-button (click)="gotoFavoritePage()">favorites</button>
+        </div> -->
+        <button full color="secondary" ion-button (click)="gotoOrderHistoryPage()">history</button>
+        <button full color="danger" ion-button (click)="logout()">log out</button>
+      </div>
+      <button *ngIf="!userLoggedin" ion-button (click)="gotoUserAuthPage()" class="login_button">
+        log in
+      </button>
+      <ion-list class="pages">
+        <button full menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon name={{p.icon}}></ion-icon>
+          <div class="icon-text">{{p.title}}</div>
+        </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+</ion-split-pane>

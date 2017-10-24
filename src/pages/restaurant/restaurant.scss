@@ -1,0 +1,253 @@
+page-restaurant {
+
+  .fixed-content,
+  .scroll-content {
+    margin-top: 0 !important;
+  }
+
+  ion-header {
+    .toolbar-background {
+      background-color: transparent;
+    }
+  }
+  .header-md::after {
+    content: none !important;
+  }
+
+  .main_image {
+    width: 100%;
+    height: 400px;
+  }
+
+  .resguide {
+    background: url("https://faas.elemecdn.com/desktop/media/img/shop-bg.0391dd.jpg") no-repeat;
+    background-size: cover;
+
+    .container {
+      position: relative;
+      display: table;
+      height: 300px;
+      padding: 0 10%;
+      width: 100%;
+
+      .res-info {
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        img {
+          margin-right: 15px;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          border: 4px solid rgba(255,255,255,.3);
+          vertical-align: middle;
+        }
+        h1{
+          display: inline-block;
+        }
+      }
+      .res-service {
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .menu {
+    h1 {
+      text-align: center;
+    }
+    ion-card{
+      &：hover {
+        width: 110%;
+        height: 110%;
+      }
+      ion-card-content {
+        padding: 8px 2px 2px 10px;
+        ion-card-title {
+           font-size: 1.5rem;
+           font-weight: 500;
+        }
+
+        @media screen and (max-width : 768px) {
+          p {
+            display: none;
+          }
+        }
+        .price {
+          font-size: 1.2em;
+        }
+
+        ion-icon {
+          cursor: pointer;
+        }
+        .ion-md-heart {
+          margin-right: 5px;
+          color: red;
+          font-size: 1.8em;
+          float: right;
+        }
+        .ion-md-add-circle{
+          float: right;
+          color: #488aff;
+          font-size: 1.8em;
+        }
+      }
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    height: 300px;
+    border: 1px solid black;
+
+  }
+
+  .submenu.fixed {
+    position: fixed;
+    top: 30px;
+  }
+
+  .order {
+
+    margin-top: 24px;
+    h1, h4 {
+      display: inline;
+    }
+
+    .order-head {
+      h4{
+        font-size: 0.5em;
+        color: gray;
+        cursor: pointer;
+        float: right;
+      }
+      button {
+        margin-left: 15px;
+        height: 30px;
+        float: right;
+      }
+    }
+
+    ion-item {
+      height: 80px;
+      margin: 10px 0;
+      ion-thumbnail {
+        max-width: 60px;
+        max-height: 60px;
+      }
+      .list-md .item-block .item-inner {
+        border-bottom: 0;
+      }
+      //order label
+      .label {
+        display: table;
+        width: 100%;
+        .iteminfo {
+          display: table-cell;
+          width:70%;
+          height: 100%;
+          vertical-align: middle;
+          h1 {
+            margin-bottom: 15px;
+            display: block;
+          }
+          .number {
+            display: inline-block;
+            border: 1px solid black;
+            margin: 0 10px;
+            padding: 0 5px;
+            border-radius: 5px;
+            text-align: center;
+          }
+          ion-icon {
+            color:red;
+            cursor: pointer;
+          }
+        }
+        .itemtotal {
+          display: table-cell;
+          width: 30%;
+          vertical-align: middle;
+          text-align: center;
+          font-size: 2em;
+        }
+      }
+    }
+  }
+
+  .order.fixed {
+    position: fixed;
+    top: 8px;
+    right: 15px;
+  }
+
+  .footer-sm {
+    display: none;
+    .order-info {
+      position: absolute;
+      bottom: 35px;
+      right: 2.5%;
+      z-index: 3;
+      width: 0px;
+      overflow: hidden;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      transition: height .4s .1s, box-shadow .3s;
+      transition-timing-function: cubic-bezier(0.67, 0.17, 0.32, 0.95);
+      background: #ffffff;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.17);
+    }
+
+    .order-info.open {
+      width: 95%;
+    }
+
+    button {
+      width: 30%;
+      height: 100%;
+      float: right;
+      margin: 0;
+    }
+  }
+
+  @media screen and (max-width : 992px) {
+
+    .fixed-content,
+    .scroll-content {
+      margin-top: 40px !important;
+    }
+
+       .menu {
+         border-right: 0;
+       }
+      .hidesm {
+          display: none;
+      }
+
+      ion-card {
+        margin: 5px;
+      }
+
+      .footer-sm {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        width:100%;
+        height:50px;
+        background-color: #424242;
+        h3{
+          margin: 12px;
+          float: left;
+        }
+        ion-icon {
+          padding: 17px;
+          color: white;
+          float: right;
+        }
+      }
+  }
+}

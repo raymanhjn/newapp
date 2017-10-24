@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content res-scroll>
+  <div class="resguide hidesm">
+    <div class="container">
+      <div class="res-info">
+        <!-- <img src="./chihuo.jpg" /> -->
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509053141&di=d9bd16d36b796a88ce0c94880fb2eeec&imgtype=jpg&er=1&src=http%3A%2F%2Fphotocdn.sohu.com%2F20151107%2Fmp40135619_1446862710873_18.jpg" />
+        <h1>老饕煮公</h1>
+      </div>
+      <div class="res-service">service</div>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row >
+      <!-- Menu -->
+      <ion-col offset-lg-1 col-12 col-lg-7 class="menu">
+        <h1 class="hidesm">Menu</h1>
+        <ion-grid>
+          <ion-row >
+            <ion-col col-6 col-md-4 *ngFor="let food of foods;let i = index">
+              <ion-card>
+                <img src="{{food.image}}"/>
+                <ion-card-content>
+                  <ion-card-title>
+                    {{food.name}}
+                  </ion-card-title>
+                  <ion-row no-padding>
+                    <ion-col col-12 col-xl-4 text-left class="price">{{food.price}}</ion-col>
+                    <ion-col col-12 col-xl-8>
+                      <ion-icon name="md-add-circle" (click)="addToOrder(i)"></ion-icon>
+                      <ion-icon name="md-heart" (click)="addToOrder(i)"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <!-- order information -->
+      <ion-col col-12 col-sm-4 #order class="order hidesm">
+        <div class="order-head">
+          <h1>Order List</h1>
+          <button ion-button primary *ngIf="orders.length > 0" (click)="confirmOrder(orders)">Check</button>
+          <h4 *ngIf="orders.length > 0" (click)="delete_allitems()">clear</h4>
+        </div>
+        <div *ngIf="orders.length == 0">You have not ordered yet!</div>
+        <ion-list>
+          <ion-item *ngFor="let order of orders; let i = index">
+            <ion-thumbnail item-start>
+              <img src="{{order.food.image}}">
+            </ion-thumbnail>
+            <div class="iteminfo">
+              <h2>{{order.food.name}}</h2>
+              <div class="number">
+                <ion-icon name="remove" (click)="decrement_item(i)"></ion-icon>
+                 {{order.number}}
+                <ion-icon name="add" (click)="increment_item(i)"></ion-icon>
+              </div>
+              <ion-icon name="md-close" color="danger" (click)="delete_item(i)"></ion-icon>
+            </div>
+            <div class="itemtotal">{{order.food.price*order.number}}</div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- footer when small screen -->
+  <div class="footer-sm">
+    <h3>Total price: {{totalprice}}</h3>
+    <button ion-button full (click)="confirmOrderSmall(orders)">Check</button>
+  </div>
+</ion-content>

@@ -1,3 +1,99 @@
 page-home {
 
+  .fixed-content,
+  .scroll-content {
+  	margin-top: 0 !important;
+  }
+
+  ion-header {
+    .toolbar-background {
+      background-color: transparent;
+    }
+  }
+
+  .header-md::after {
+    content: none;
+  }
+
+  section {
+    background: url('https://local-store-res.cloudinary.com/image/upload/w_1440,h_550,c_fill,q_80,f_auto/Charlotte_NC-02a-hero-1440x550-4_qewmxk') no-repeat;
+    background-size: 100% 400px;
+    width: 100%;
+    height: 400px;
+
+    @media screen and (max-width : 576px) {
+        background-size: 100% 200px;
+        height: 200px;
+    }
+  }
+
+  .submenu{
+    width: 100%;
+    padding: 0;
+    background-color: #2c3136;
+    text-align: center;
+    .nav {
+      width: 90%;
+      color: #ffffff;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    ion-icon {
+      font-size: 3em;
+    }
+  }
+
+  .intro {
+    width: 80%;
+    margin: 50px auto;
+    ion-row {
+      margin-top: 20px;
+      .showsm {
+        display: block;
+      }
+      .hidesm {
+        display: none;
+      }
+      p{
+        margin-top: 10%;
+      }
+    }
+
+
+    text-align: center;
+    img {
+      width: 80%;
+      max-width:200px;
+      height: auto;
+    }
+
+    @media screen and (max-width : 576px) {
+      img {
+        width: 100px;
+        height: 100px;
+      }
+
+      ion-row {
+        p {
+          margin-top: 10px;
+        }
+        .showsm {
+          display: none;
+        }
+        .hidesm {
+          display: block;
+        }
+      }
+    }
+
+    ion-icon {
+      font-size: 4em;
+
+    }
+
+    .intro-part {
+      margin-top: 30px;
+    }
+  }
 }
