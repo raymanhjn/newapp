@@ -9,6 +9,10 @@ page-home {
     .toolbar-background {
       background-color: transparent;
     }
+
+    .toolbar button {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   .header-md::after {
@@ -22,8 +26,9 @@ page-home {
     height: 400px;
 
     @media screen and (max-width : 576px) {
-        background-size: 100% 200px;
-        height: 200px;
+        background: url('https://www.uncc.edu/sites/www.uncc.edu/files/section/home-charlotte-full-1000.jpg') no-repeat;
+        background-size: cover;
+        height: 50%;
     }
   }
 
@@ -45,10 +50,9 @@ page-home {
   }
 
   .intro {
-    width: 80%;
-    margin: 50px auto;
+    margin: auto;
     ion-row {
-      margin-top: 20px;
+      padding: 20px 0;
       .showsm {
         display: block;
       }
@@ -60,15 +64,19 @@ page-home {
       }
     }
 
-
+    ion-row:nth-child(2){
+      background-color: #f2f2f2;
+    }
     text-align: center;
     img {
       width: 80%;
       max-width:200px;
       height: auto;
+      border-radius: 50px;
     }
 
     @media screen and (max-width : 576px) {
+
       img {
         width: 100px;
         height: 100px;

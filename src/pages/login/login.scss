@@ -1,3 +1,45 @@
 page-login {
+  ion-header {
+    .toolbar-background {
+      background-color: transparent;
+    }
+  }
 
+  .background {
+    width: 100%;
+    height: 100%;
+    background: url('http://dz0zjhi21dz2t.cloudfront.net/media/84093/photos/130696/2048.jpg') no-repeat;
+    background-size: cover;
+  }
+
+  .scroll-content {
+    text-align: center;
+    margin-top: -60px;
+  }
+
+  ion-card.card {
+    background: rgba(232,230,230,0.8);
+    border-radius: 10px;
+    button {
+      margin-top: 10px;
+    }
+  }
+  .item {
+    background: rgba(232,230,230,0);
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 3em;
+    text-transform: uppercase;
+    font-family: 'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;
+    font-weight:lighter;
+    margin: 60px 0 30px;
+  }
+
+  .error-message {
+    color: red;
+    background-color: rgba(255, 131, 131, 0.8);
+    border-radius: 0 0 10px 10px;
+  }
 }

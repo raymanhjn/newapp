@@ -1,45 +1,63 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
-  <ion-row>
-    <ion-col col-sm-5>
+  <ion-row class="main">
+    <ion-col col-sm-6>
       <h1>New User</h1>
-      <ion-item>
-        <ion-label floating>Email Address</ion-label>
-        <ion-input type="text" [(ngModel)]="nuser.email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="nuser.password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Confirm Password</ion-label>
-        <ion-input type="password" [(ngModel)]="nuser.confirm_password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="nuser.username"></ion-input>
-      </ion-item>
-      <div>{{registerError}}</div>
-      <button class="ubutton" ion-button (click)="register(nuser)">Sign up</button>
+      <ion-card>
+        <ion-card-content>
+          <form [formGroup]="signupform" (ngSubmit)="register(signupform.value)">
+            <ion-item>
+              <ion-label floating>Email Address</ion-label>
+              <ion-input type="text" formControlName="email" class="text-input"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="signupform.controls.email.touched && signupform.controls.email.hasError('required')">
+              Sorry, email is required!
+            </div>
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="signupform.controls.password.touched && signupform.controls.password.hasError('required')">
+              Sorry, email is required!
+            </div>
+            <ion-item>
+              <ion-label floating>Confirm Password</ion-label>
+              <ion-input type="password" formControlName="confirm_password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Username</ion-label>
+              <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="signupform.controls.username.touched && signupform.controls.username.hasError('required')">
+              Sorry, email is required!
+            </div>
+            <button ion-button round type="submit">Sign up</button>
+          </form>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
-    <ion-col offset-sm-2>
+    <ion-col col-sm-6>
       <h1>Registed User</h1>
-      <ion-item>
-        <ion-label floating>Email Address</ion-label>
-        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-      </ion-item>
-      <button class="ubutton" ion-button (click)="login(user)">Login</button>
+      <ion-card>
+        <ion-card-content>
+          <form [formGroup]="loginform" (ngSubmit)="register(loginform.value)">
+            <ion-item style="margin30">
+              <ion-label floating>Email Address</ion-label>
+              <ion-input type="text" formControlName="email"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="loginform.controls.email.touched && loginform.controls.email.hasError('required')">
+              Sorry, email is required!
+            </div>
+            <ion-item class="margin30">
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="loginform.controls.password.touched && loginform.controls.password.hasError('required')">
+              Sorry, email is required!
+            </div>
+            <button ion-button round type="submit">Sign in</button>
+          </form>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
   </ion-row>
 

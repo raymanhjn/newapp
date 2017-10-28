@@ -1,19 +1,49 @@
 page-user-auth {
-
-
   ion-header {
     display: none;
     .toolbar-background {
       background-color: transparent;
     }
   }
+  .main {
+    background: url('https://upload.wikimedia.org/wikipedia/commons/0/0a/Charlotte_Skyline_2011_-_Ricky_W.jpg') no-repeat;
+    background-size: cover;
+    height: 100%;
+    h1 {
+      margin-top: 30%;
+      text-align: center;
+      color: #ffffff;
+    }
 
-  ion-row {
-    margin: 200px 10%;
-    height: 400px;
-    .user_auth {
-      width: 50%;
-      max-width: 400px;
+    ion-card.card {
+      height: 400px;
+      background: rgba(232,230,230,0.6);
+      border-radius: 10px;
+      ion-card-content {
+        height: 100%;
+      }
+
+      button {
+        display: block;
+        margin: 20px auto;
+        width: 30%;
+      }
+
+      .error-message {
+        color: red;
+        background-color: rgba(255, 131, 131, 0.8);
+        border-radius: 0 0 10px 10px;
+        text-align: center;
+        margin-left:16px;
+        font-size: 15px;
+      }
+    }
+    .item {
+      background: rgba(232,230,230,0);
+    }
+
+    ion-item.margin30 {
+      margin:30px 0;
     }
   }
 
@@ -24,9 +54,6 @@ page-user-auth {
   ion-tabs {
     display: none;
   }
-  h1 {
-    text-align: center;
-  }
 
   .ubutton {
     float: right;
@@ -36,12 +63,34 @@ page-user-auth {
   }
 
 
+
+
   @media screen and (max-width : 800px) {
+    .main {
+      background: none;
+    }
+    .row {
+      display: none;
+    }
     ion-header {
       display: block;
+      .toolbar-background-md {
+          // background: linear-gradient(10deg,#4ed9fc,#4EE7FC);
+      }
     }
     ion-tabs {
       display: block;
+    }
+
+    .tabs-md .tabbar {
+      background: transparent;
+      a, .tab-button-icon {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .tab-button[aria-selected=true], .tab-button[aria-selected=true] .tab-button-icon{
+        color: rgba(255, 255, 255, 1);
+      }
     }
   }
 }

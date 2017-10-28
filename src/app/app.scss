@@ -21,7 +21,7 @@ ion-menu {
       cursor: pointer;
       @media screen and (max-width : 576px) {
         margin-top: 20px;
-        height: 90px;
+        height: auto;
       }
     }
 

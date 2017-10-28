@@ -8,7 +8,7 @@ export interface Order {
 }
 
 export interface Item {
-  food: {},
+  food: Food,
   number: number,
 }
 
@@ -16,4 +16,12 @@ export interface Contact {
   contact_name:string,
   address: string,
   phone:string,
+}
+
+export interface Food {
+  name: string,
+  image:string,
+  price: number,
+  type:string,
+  description:string,
 }

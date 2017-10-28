@@ -1,12 +1,12 @@
-<ion-header>
+<ion-header #head>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1509053141&di=d9bd16d36b796a88ce0c94880fb2eeec&imgtype=jpg&er=1&src=http%3A%2F%2Fphotocdn.sohu.com%2F20151107%2Fmp40135619_1446862710873_18.jpg" />
     </button>
   </ion-navbar>
 </ion-header>
 
-<ion-content res-scroll>
+<ion-content hide-header [head]="head">
   <div class="resguide hidesm">
     <div class="container">
       <div class="res-info">
@@ -18,13 +18,13 @@
     </div>
   </div>
   <ion-grid>
-    <ion-row >
+    <ion-row>
       <!-- Menu -->
-      <ion-col offset-lg-1 col-12 col-lg-7 class="menu">
+      <ion-col col-12 col-lg-8 class="menu">
         <h1 class="hidesm">Menu</h1>
         <ion-grid>
           <ion-row >
-            <ion-col col-6 col-md-4 *ngFor="let food of foods;let i = index">
+            <ion-col col-6 col-md-4 col-xl-3 *ngFor="let food of foods;let i = index">
               <ion-card>
                 <img src="{{food.image}}"/>
                 <ion-card-content>
@@ -32,10 +32,10 @@
                     {{food.name}}
                   </ion-card-title>
                   <ion-row no-padding>
-                    <ion-col col-12 col-xl-4 text-left class="price">{{food.price}}</ion-col>
-                    <ion-col col-12 col-xl-8>
+                    <ion-col col-xl-4 class="price">{{food.price}}</ion-col>
+                    <ion-col col-xl-8>
                       <ion-icon name="md-add-circle" (click)="addToOrder(i)"></ion-icon>
-                      <ion-icon name="md-heart" (click)="addToOrder(i)"></ion-icon>
+                      <ion-icon name="md-heart"></ion-icon>
                     </ion-col>
                   </ion-row>
                 </ion-card-content>
@@ -45,7 +45,7 @@
         </ion-grid>
       </ion-col>
       <!-- order information -->
-      <ion-col col-12 col-sm-4 #order class="order hidesm">
+      <ion-col col-12 col-sm-4 class="order hidesm">
         <div class="order-head">
           <h1>Order List</h1>
           <button ion-button primary *ngIf="orders.length > 0" (click)="confirmOrder(orders)">Check</button>
@@ -53,7 +53,7 @@
         </div>
         <div *ngIf="orders.length == 0">You have not ordered yet!</div>
         <ion-list>
-          <ion-item *ngFor="let order of orders; let i = index">
+          <ion-item *ngFor="let order of orders; let i = index" no-lines>
             <ion-thumbnail item-start>
               <img src="{{order.food.image}}">
             </ion-thumbnail>
@@ -69,6 +69,7 @@
             <div class="itemtotal">{{order.food.price*order.number}}</div>
           </ion-item>
         </ion-list>
+        <h3 *ngIf="orders.length > 0">Total price: {{totalprice}}</h3>
       </ion-col>
     </ion-row>
   </ion-grid>

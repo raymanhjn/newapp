@@ -1,13 +1,13 @@
-<ion-header>
+<ion-header #header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <img src="http://www.csufablab.org/wp-content/uploads/2017/05/ups-logo-designer-project-flat-ups-logo-design-concept-mr-william-barry-new-logo.png" />
     </button>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div class="expressguide hidesm">
+<ion-content hide-header [head]="header">
+  <div class="expressguide">
     <div class="container">
       <div class="res-info">
         <!-- <img src="./chihuo.jpg" /> -->
@@ -15,41 +15,77 @@
       </div>
     </div>
   </div>
-    <ion-grid>
-      <ion-row>
-        <ion-col offset-sm-1 col-12 col-sm-3 class="express-rule">
-          <h1>Rules</h1>
-          <ul>
-            <li>first fule</li>
-            <li>second fule</li>
-            <li>third fule</li>
-          </ul>
+  <ion-grid>
+    <div class="expressrules">
+      <h1>Rules</h1>
+      <ul>
+        <li>first fule</li>
+        <li>second fule</li>
+        <li>third fule</li>
+      </ul>
+    </div>
+    <ion-row>
+        <ion-col col-12 col-lg-6>
+          <div class="breadcrumb">
+          	<ul>
+          		<li><a>step one</a></li>
+              <li><a>step two</a></li>
+              <li><a>step three</a></li>
+          	</ul>
+          </div>
         </ion-col>
-        <ion-col offset-sm-1 col-12 col-sm-7>
-          <form (ngSubmit)="submitOrder(express)">
-            <ion-item>
+        <ion-col col-12 col-lg-6>
+          <form [formGroup]="expressForm" (ngSubmit)="submitOrder(expressForm.value)">
+            <ion-item [ngClass]="{'error-border':!expressForm.controls.username.valid && expressForm.controls.username.touched}">
               <ion-label floating>name</ion-label>
-              <ion-input type="text" [(ngModel)]="express.user_name" name="user_name"></ion-input>
+              <ion-input type="text" formControlName="username"></ion-input>
             </ion-item>
+            <div class="error-message" *ngIf="expressForm.controls.username.touched && expressForm.controls.username.hasError('required')">
+              Sorry, username is required!
+            </div>
             <ion-item>
               <ion-label floating>address</ion-label>
-              <ion-input type="text" [(ngModel)]="express.address" name="address"></ion-input>
+              <ion-input type="text" formControlName="address"></ion-input>
             </ion-item>
+            <div class="error-message" *ngIf="expressForm.controls.address.touched && expressForm.controls.address.hasError('required')">
+              Sorry, address is required!
+            </div>
+            <ion-item>
+              <ion-label floating>phone</ion-label>
+              <ion-input type="text" formControlName="phone"></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="expressForm.controls.phone.touched && expressForm.controls.phone.hasError('required')">
+              Sorry, phone is required!
+            </div>
             <ion-item>
               <ion-label floating>category</ion-label>
-              <ion-input type="text" [(ngModel)]="express.item_category" name="item_category"></ion-input>
+              <ion-input type="text" formControlName="item_category"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label floating>weight</ion-label>
-              <ion-input type="text" [(ngModel)]="express.item_weight" name="item_weight"></ion-input>
+              <ion-input type="text" formControlName="item_weight"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Need Box</ion-label>
-              <ion-checkbox color="dark" [(ngModel)]="express.needbox" name="needbox"></ion-checkbox>
+              <ion-checkbox color="dark" formControlName="needbox"></ion-checkbox>
             </ion-item>
             <button ion-button full type="submit">Order</button>
           </form>
         </ion-col>
-      </ion-row>
-    </ion-grid>
+    </ion-row>
+    <div class="track">
+      <h2>Package Tracking</h2>
+      <a href="https://www.ups.com/us/en/Home.page" target="_blank">UPS official page</a>
+    </div>
+    <ion-row class="dropoff">
+        <ion-col col-12 col-lg-6>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Maps.me_screenshot_7.0.5.png/1200px-Maps.me_screenshot_7.0.5.png"/>
+        </ion-col>
+        <ion-col col-12 col-lg-5>
+          <h2>You can also drop off</h2>
+          <p>blablabla...</p>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

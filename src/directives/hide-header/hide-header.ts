@@ -13,7 +13,7 @@ export class HideHeaderDirective {
   scrollContent;
 
   constructor( public element:ElementRef, public renderer:Renderer) {
-
+    console.log("directive");
   }
 
   ngOnInit() {
@@ -27,11 +27,11 @@ export class HideHeaderDirective {
   onContentScroll(event) {
     if(event.scrollTop > 0 ){
       this.renderer.setElementStyle(this.header, "top", "-60px");
-      this.renderer.setElementStyle(this.header, "background", "transparent");
+      // this.renderer.setElementStyle(this.header, "background", "transparent");
       this.renderer.setElementStyle(this.scrollContent,"margin-top","0px");
     } else {
       this.renderer.setElementStyle(this.header, "top", "0px");
-      this.renderer.setElementStyle(this.header, "background", "#f8f8f8");
+      // this.renderer.setElementStyle(this.header, "background", "#f8f8f8");
       this.renderer.setElementStyle(this.scrollContent,"margin-top","60px");
     }
 

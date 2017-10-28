@@ -1,12 +1,33 @@
-<ion-content padding>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="background">
   <h1>Login</h1>
-  <ion-item>
-    <ion-label floating>Email Address</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
-  <button ion-button full (click)="login(user)">Login</button>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="loginform" (ngSubmit)="login(loginform.value)">
+        <ion-item [ngClass]="{'error-border':!loginform.controls.email.valid && loginform.controls.email.touched}">
+          <ion-label floating>Email Address</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="loginform.controls.email.touched && loginform.controls.email.hasError('required')">
+          Sorry, email is required!
+        </div>
+        <ion-item>
+          <ion-label floating>password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="loginform.controls.password.touched && loginform.controls.password.hasError('required')">
+          Sorry, email is required!
+        </div>
+        <button ion-button full type="submit">Sign up</button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

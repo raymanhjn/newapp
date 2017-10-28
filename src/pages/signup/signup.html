@@ -1,12 +1,53 @@
-<ion-content padding>
-  <h1>Signup</h1>
-  <ion-item>
-    <ion-label floating>Email Address</ion-label>
-    <ion-input type="text" [(ngModel)]="nuser.email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" [(ngModel)]="nuser.password"></ion-input>
-  </ion-item>
-  <button ion-button full (click)="register(nuser)">Sign up</button>
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background">
+  <h1>Sign up</h1>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="signupform" (ngSubmit)="register(signupform.value)">
+        <ion-item [ngClass]="{'error-border':!signupform.controls.email.valid && signupform.controls.email.touched}">
+          <ion-label floating>Email Address</ion-label>
+          <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="signupform.controls.email.touched && signupform.controls.email.hasError('required')">
+          Sorry, email is required!
+        </div>
+        <div class="error-message" *ngIf="signupform.controls.email.touched && signupform.controls.email.hasError('email') && !signupform.controls.email.hasError('required')">
+          Sorry, email format is wrong!
+        </div>
+
+        <ion-item>
+          <ion-label floating>password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="signupform.controls.password.touched && signupform.controls.password.hasError('required')">
+          Sorry, password is required!
+        </div>
+        <ion-item>
+          <ion-label floating>confirm password</ion-label>
+          <ion-input type="password" formControlName="confirm_password"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="!confirmed">
+          Sorry, confirm password is not same as password!
+        </div>
+        <ion-item>
+          <ion-label floating>username</ion-label>
+          <ion-input type="password" formControlName="username"></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="signupform.controls.username.touched && signupform.controls.username.hasError('required')">
+          Sorry, username is required!
+        </div>
+        <div class="error-message">
+          {{errorMessage}}
+        </div>
+        <button ion-button full type="submit">Sign up</button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

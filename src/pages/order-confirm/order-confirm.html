@@ -1,55 +1,59 @@
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>order-confirm</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
 <ion-content padding>
   <ion-row>
     <ion-col col-12 col-sm-6>
-      <ion-list>
-        <ion-item class="itemlist" *ngFor="let order of orders; let i = index">
-          <ion-thumbnail item-start>
-            <img src="{{order.food.image}}">
-          </ion-thumbnail>
-          <div class="iteminfo">
-            <h2>{{order.food.name}}</h2>
-            <div class="number">
-              <ion-icon name="remove" (click)="decrement_item(i)"></ion-icon>
-               {{order.number}}
-              <ion-icon name="add" (click)="increment_item(i)"></ion-icon>
-            </div>
-            <ion-icon name="md-close" color="danger" (click)="delete_item(i)"></ion-icon>
-          </div>
-          <div class="itemtotal">{{order.food.price*order.number}}</div>
-        </ion-item>
-      </ion-list>
-      <h1 *ngIf="oreder && orders.length >0" class="total">Total: {{totalprice}}</h1>
+      <ion-card>
+        <ion-card-header>点餐卡</ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item class="itemlist" *ngFor="let order of orders; let i = index">
+              <ion-thumbnail item-start>
+                <img src="{{order.food.image}}">
+              </ion-thumbnail>
+              <div class="iteminfo">
+                <h2>{{order.food.name}}</h2>
+                <div class="number">
+                  <ion-icon name="remove" (click)="decrement_item(i)"></ion-icon>
+                   {{order.number}}
+                  <ion-icon name="add" (click)="increment_item(i)"></ion-icon>
+                </div>
+                <ion-icon name="md-close" color="danger" (click)="delete_item(i)"></ion-icon>
+              </div>
+              <div class="itemtotal">{{order.food.price*order.number}}</div>
+            </ion-item>
+          </ion-list>
+          <h1 *ngIf="orders && orders.length >0" class="total">Total: {{totalprice}}</h1>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
     <ion-col col-12 col-sm-6>
-      <form (ngSubmit)="submitOrder()">
-        <ion-item>
-          <ion-label floating>Name</ion-label>
-          <ion-input type="text" [(ngModel)]="contact.contact_name" name="name"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Address</ion-label>
-          <ion-input [(ngModel)]="contact.address" name="address"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Phone number</ion-label>
-          <ion-input [(ngModel)]="contact.phone" name="phone"></ion-input>
-        </ion-item>
-        <button ion-button icon-left type="submit">
-          <ion-icon name="md-happy"></ion-icon>
-          Submit
-        </button>
-      </form>
-      <button ion-button icon-left (click)="backToMenu()" color="danger">
-        <ion-icon name="md-arrow-round-back"></ion-icon>
-        Back
-      </button>
+      <ion-card>
+        <ion-card-header>信息卡</ion-card-header>
+        <ion-card-content>
+          <form [formGroup]="orderform" (ngSubmit)="submitOrder(orderform.value)">
+            <ion-item>
+              <ion-label floating>Name</ion-label>
+              <ion-input type="text" formControlName="contact_name" name="name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Address</ion-label>
+              <ion-input formControlName="address" name="address"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Phone number</ion-label>
+              <ion-input formControlName="phone" name="phone"></ion-input>
+            </ion-item>
+            <div *ngIf="errorMessage && errorMessage.length>0 " class="error-message">{{errorMessage}}</div>
+            <button ion-button icon-left type="submit">
+              <ion-icon name="md-happy"></ion-icon>
+              Submit
+            </button>
+          </form>
+          <button ion-button icon-left (click)="backToMenu()" color="danger">
+            <ion-icon name="md-arrow-round-back"></ion-icon>
+            Back
+          </button>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-content>

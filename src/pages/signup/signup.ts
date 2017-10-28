@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../../models/user';
+
 
 @IonicPage()
 @Component({
@@ -10,17 +13,42 @@ import { User } from '../../models/user';
 })
 export class SignupPage {
   nuser = {} as User;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public afauth: AngularFireAuth) {
+  signupform:FormGroup;
+  confirmed:boolean = true;
+  errorMessage:string = "";
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public afauth: AngularFireAuth,
+              public firebaseService:FirebaseServiceProvider,
+              public formBuilder: FormBuilder) {
+
+        this.signupform = formBuilder.group({
+          email:['',Validators.compose([Validators.required,Validators.email])],
+          password:['',Validators.compose([Validators.required])],
+          confirm_password:['',Validators.compose([Validators.required])],
+          username:['',Validators.compose([Validators.required])],
+        });
   }
 
-  async register(user) {
-    try {
-      const result = this.afauth.auth.createUserWithEmailAndPassword(user.email,user.password);
-      console.log(result);
+  async register(value:any) {
+    if(value.password != value.confirm_password){
+      this.confirmed = false;
+      console.log("not the same");
+    } else {
+      this.afauth.auth.createUserWithEmailAndPassword(value.email,value.password)
+            .then( result => {
+              let userProfile = {} as User;
+              userProfile.username =value.username;
+              this.firebaseService.addUserProfile(result.uid, userProfile);
+              this.confirmed = true;
+              this.navCtrl.parent.parent.setRoot("HomePage");
+            })
+            .catch( error => {
+              this.errorMessage = error.message;
+              console.log(error.message);
+            });
     }
-    catch(e) {
-      console.log(e);
-    }
+    // this.navCtrl.parent.parent.setRoot("HomePage");
+    // console.log(this.navCtrl.parent.parent);
   }
-
 }

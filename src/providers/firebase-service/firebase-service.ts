@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Order } from '../../models/restaurant';
 import { User } from '../../models/user';
+import { Express } from '../../models/express';
 
 @Injectable()
 export class FirebaseServiceProvider {
@@ -29,7 +30,7 @@ export class FirebaseServiceProvider {
 
 
   //express order
-  expressOrder(eOrder) {
+  expressOrder(eOrder: Express) {
     this.afd.list('/express/').push(eOrder);
   }
 
