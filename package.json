@@ -29,6 +29,7 @@
     "angularfire2": "^5.0.0-rc.2",
     "cordova-plugin-file": "^4.3.3",
     "cordova-plugin-file-transfer": "^1.6.3",
+    "express": "^4.16.2",
     "firebase": "^4.5.0",
     "ionic-angular": "3.7.1",
     "ionic-image-loader": "^4.2.1",
